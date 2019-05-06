@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>¯\_(ツ)_/¯</title>
+    <style>
+    #gif {
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      max-height: 100%;
+    }
+
+    .position {
+      position: fixed;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #search {
+      width: 500px;
+      color: white;
+      background-color: transparent;
+    }
+
+    #icon {
+      width: 50px;
+      color: white;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+    </style>
+  </head>
+  <body>
+    <img id="gif" src="https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif" alt="Hi!">
+    <form class="position" onsubmit="return Random()">
+      <input id="search" type="text" class="btn btn-outline-light" placeholder="Escreve a tua pergunta ou opinião aqui!" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Escreve a tua pergunta ou opinião aqui!'" required>
+      <input type="submit" class="btn btn-outline-light" value="&#xF002;" style="font-family:Arial, FontAwesome">
+    </form>
+
+    <script>
+    var host = "http://api.giphy.com";
+    var endpoint = "/v1/gifs/random";
+    var key = "ntlmxTyqRnV6BN9bChT22JUKTj45Y3n6";
+    var ps = ["no", "yes", "without a doubt", "maybe", "definitely", "wrong", "hush", "doubtful", "definitely not", "agree", "eww", "frustrated", "idk", "meh", "no", "yes", "nod", "shrug", "what", "wink", "yes", "no"];
+
+    function Random() {
+      var input = ps[Math.floor(Math.random() * ps.length)];
+      console.log(input);
+      var xhr = $.get(host + endpoint + "?tag=" + input + "&api_key=" + key);
+      xhr.done(function(response) {
+        console.log("success got data", response);
+
+        url =  response.data.images.original.url;
+        var s = document.getElementById('gif');
+        s.src = url;
+      });
+      return false;
+    }
+    </script>
+  </body>
+</html>
