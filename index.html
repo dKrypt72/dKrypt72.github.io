@@ -132,12 +132,14 @@
       }
     }
 
-    function myTest(name) {
+    var inter;
+
+    function myTitle(name) {
       let go = true;
       let num = 1;
       let c = 0;
       let ftitle = name;
-      setInterval(function() {
+      inter = setInterval(function() {
         if(go) {
           document.title = name;
           name = name.substring(num);
@@ -155,26 +157,23 @@
           }
           c++;
           name += ftitle.substring(0, c);
-          console.log(name);
           if(name.trim() == ftitle.trim()) {
             go = true;
           }
           document.title = name;
         }
-        console.log(document.title);
-      }, 250);
+      }, 125);
     }
 
     function VidNext() {
+      window.clearInterval(inter);
       document.getElementById("myVideo").poster = "https://thumbs.gfycat.com/DeliciousAnnualDromaeosaur-size_restricted.gif";
       let x = Math.round(Math.random() * 9);
-      title = srcMedia[x].name;
-      myTest(title);
+      myTitle(srcMedia[x].name);
       vid.src = srcMedia[x].src;
       vid.play();
       document.getElementById("aPause").classList.remove('fa-play');
       document.getElementById("aPause").classList.add('fa-pause');
-      console.log(title);
     }
 
     function VidPrevious() {
