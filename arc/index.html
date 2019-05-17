@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Arc Configuration</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .leftside {
+      position: fixed;
+      top: 50%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+    }
+
+    .rightside {
+      position: absolute;
+      top: 50%;
+      left: 80%;
+      transform: translate(-50%, -50%);
+    }
+
+    .code {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .codes {
+      width: 120px;
+      height: 150px;
+      text-align: center;
+      font-family: verdana;
+      font-size: 72px;
+      font-weight: bold;
+      color: yellow;
+      background-color: gray;
+      border: none;
+    }
+
+    .solution {
+      position: absolute;
+      font-family: verdana;
+      font-size: 300%;
+      font-weight: bold;
+      color: white;
+      top: 90%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .num1,
+    .num2,
+    .num3,
+    .num4,
+    .num5,
+    .num6,
+    .num7,
+    .num8,
+    .num9,
+    .num10,
+    .num11,
+    .num12 {
+      position: fixed;
+    }
+
+    .num1:hover,
+    .num2:hover,
+    .num3:hover,
+    .num4:hover,
+    .num5:hover,
+    .num6:hover,
+    .num7:hover,
+    .num8:hover,
+    .num9:hover,
+    .num10:hover,
+    .num11:hover,
+    .num12:hover {
+      filter: brightness(0) saturate(100%) invert(87%) sepia(61%) saturate(3276%) hue-rotate(360deg) brightness(101%) contrast(105%);
+    }
+
+    .num1 {
+      left: 258px;
+      top: 5px;
+    }
+
+    .num2 {
+      left: 355px;
+      top: 40px;
+    }
+
+    .num3 {
+      left: 424px;
+      top: 133px;
+    }
+
+    .num4 {
+      left: 424px;
+      top: 258px;
+    }
+
+    .num5 {
+      left: 355px;
+      top: 354px;
+    }
+
+    .num6 {
+      left: 258px;
+      top: 424px;
+    }
+
+    .num7 {
+      left: 133px;
+      top: 424px;
+    }
+
+    .num8 {
+      left: 41px;
+      top: 355px;
+    }
+
+    .num9 {
+      left: 5px;
+      top: 258px;
+    }
+
+    .num10 {
+      left: 5px;
+      top: 133px;
+    }
+
+    .num11 {
+      left: 41px;
+      top: 40px;
+    }
+
+    .num12 {
+      left: 133px;
+      top: 5px;
+    }
+  </style>
+</head>
+
+<body bgcolor="#282828">
+
+  <img src="vroom.png" class="center">
+
+  <div class="leftside">
+    <img id="n1c1" class="num1" src="Numbers/num1.png" title="1" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n2c1" class="num2" src="Numbers/num2.png" title="2" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n3c1" class="num3" src="Numbers/num3.png" title="3" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n4c1" class="num4" src="Numbers/num4.png" title="4" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n5c1" class="num5" src="Numbers/num5.png" title="5" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n6c1" class="num6" src="Numbers/num6.png" title="6" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n7c1" class="num7" src="Numbers/num7.png" title="7" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n8c1" class="num8" src="Numbers/num8.png" title="8" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n9c1" class="num9" src="Numbers/num9.png" title="9" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n10c1" class="num10" src="Numbers/num10.png" title="10" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n11c1" class="num11" src="Numbers/num11.png" title="11" onclick="document.getElementById('code1').value = this.title; Click(this);">
+    <img id="n12c1" class="num12" src="Numbers/num12.png" title="12" onclick="document.getElementById('code1').value = this.title; Click(this);">
+
+    <img src="border.png">
+  </div>
+
+  <div class="code">
+    <input id="code1" class="codes" type="text" maxlength="2" value="0" onclick="this.select();" oninput="CheckCode(this);">
+    <span class="codes" style="background-color: #282828;">-</span>
+    <input id="code2" class="codes" type="text" maxlength="2" value="0" onclick="this.select();" oninput="CheckCode(this);">
+  </div>
+
+  <div class="rightside">
+    <img class="num1" src="Numbers/num1.png" title="1" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num2" src="Numbers/num2.png" title="2" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num3" src="Numbers/num3.png" title="3" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num4" src="Numbers/num4.png" title="4" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num5" src="Numbers/num5.png" title="5" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num6" src="Numbers/num6.png" title="6" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num7" src="Numbers/num7.png" title="7" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num8" src="Numbers/num8.png" title="8" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num9" src="Numbers/num9.png" title="9" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num10" src="Numbers/num10.png" title="10" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num11" src="Numbers/num11.png" title="11" onclick="document.getElementById('code2').value = this.title; Click(this);">
+    <img class="num12" src="Numbers/num12.png" title="12" onclick="document.getElementById('code2').value = this.title; Click(this);">
+
+    <img src="border.png">
+  </div>
+
+  <div class="solution">
+    <span id="solution">Solution</span>
+  </div>
+
+  <script>
+    var f1 = false;
+    var f2 = false;
+    var aux1, aux2;
+    var cod1, cod2;
+
+    function Click(id) {
+      if (!$(id).closest(".leftside").length) {
+        if (!f2) {
+          aux2 = id;
+          id.style.filter = 'brightness(0) saturate(100%) invert(87%) sepia(61%) saturate(3276%) hue-rotate(360deg) brightness(101%) contrast(105%)';
+          f2 = true;
+        } else {
+          aux2.style.filter = null;
+          id.style.filter = 'brightness(0) saturate(100%) invert(87%) sepia(61%) saturate(3276%) hue-rotate(360deg) brightness(101%) contrast(105%)';
+          aux2 = id;
+        }
+      } else if (!$(id).closest(".rightside").length) {
+        if (!f1) {
+          aux1 = id;
+          id.style.filter = 'brightness(0) saturate(100%) invert(87%) sepia(61%) saturate(3276%) hue-rotate(360deg) brightness(101%) contrast(105%)';
+          f1 = true;
+        } else {
+          aux1.style.filter = null;
+          id.style.filter = 'brightness(0) saturate(100%) invert(87%) sepia(61%) saturate(3276%) hue-rotate(360deg) brightness(101%) contrast(105%)';
+          aux1 = id;
+        }
+      }
+      CheckCode();
+    }
+
+    function CheckCode() {
+      if (true) {
+        cod1 = document.getElementById('code1').value;
+        cod2 = document.getElementById('code2').value;
+        if(cod1 >= 12) {
+          document.getElementById('code1').value = 12;
+        }
+        if(cod2 >= 12) {
+          document.getElementById('code2').value = 12;
+        }
+        if (cod1 == 1 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T2: <span style='color: cyan;'>Cyan5</span>/<span style='color: red;'>Red1</span>";
+        } else if (cod1 == 1 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T2: Blue7";
+        } else if (cod1 == 1 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T1: Red6";
+        } else if (cod1 == 1 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T1: Yellow7<br>T2: Green4<br>T3: White4";
+        } else if (cod1 == 1 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T2: Purple5";
+        } else if (cod1 == 1 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T2: Yellow4/Purple3/Blue2<br>T3: Purple6";
+        } else if (cod1 == 2 && cod2 == 2) {
+          document.getElementById('solution').innerHTML = "T3: Red4";
+        } else if (cod1 == 2 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T2: Green3";
+        } else if (cod1 == 2 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T2: Green6";
+        } else if (cod1 == 2 && cod2 == 9) {
+          document.getElementById('solution').innerHTML = "T1: Green2/Purple6<br>T2: Cyan3";
+        } else if (cod1 == 2 && cod2 == 10) {
+          document.getElementById('solution').innerHTML = "T2: White2<br>T3: Green6";
+        } else if (cod1 == 2 & cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T3: Red7/Green2";
+        } else if (cod1 == 2 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T2: Blue1";
+        } else if (cod1 == 3 && cod2 == 2) {
+          document.getElementById('solution').innerHTML = "T2: Red7/Green1";
+        } else if (cod1 == 3 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T1: Cyan2<br>T2: Blue5";
+        } else if (cod1 == 3 & cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T3: White6";
+        } else if (cod1 == 3 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T2: Blue6<br>T3: Yellow4/Blue4";
+        } else if (cod1 == 3 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T1: Yellow4";
+        } else if (cod1 == 4 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T3: Green4/Cyan1";
+        } else if (cod1 == 4 && cod2 == 2) {
+          document.getElementById('solution').innerHTML = "T3: Red3";
+        } else if (cod1 == 4 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T2: Green2";
+        } else if (cod1 == 4 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T1: Cyan1<br>T3: Yellow1";
+        } else if (cod1 == 4 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T1: White4";
+        } else if (cod1 == 4 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T1: Purple2";
+        } else if (cod1 == 4 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T1: Blue5";
+        } else if (cod1 == 4 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T1: White5<br>T3: White5";
+        } else if (cod1 == 4 && cod2 == 9) {
+          document.getElementById('solution').innerHTML = "T1: Cyan5<br>T2: Purple7<br>T3: Purple1/Yellow6";
+        } else if (cod1 == 4 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T1: Green6/Yellow1<br> T3: Cyan2";
+        } else if (cod1 == 5 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T3: Blue5/Yellow7/Cyan6";
+        } else if (cod1 == 5 && cod2 == 2) {
+          document.getElementById('solution').innerHTML = "T2: Red5";
+        } else if (cod1 == 5 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T2: Purple4";
+        } else if (cod1 == 5 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T1: Red5/Cyan7";
+        } else if (cod1 == 5 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T2: Yellow1";
+        } else if (cod1 == 5 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T2: Red6<br>T3: Purple3/White3";
+        } else if (cod1 == 5 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T1: Red7";
+        } else if (cod1 == 5 && cod2 == 9) {
+          document.getElementById('solution').innerHTML = "T1: Red1/Red4<br>T2: Purple6<br>T3: Purple7";
+        } else if (cod1 == 5 && cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T3: Red1";
+        } else if (cod1 == 5 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T2: Yellow5";
+        } else if (cod1 == 6 && cod2 == 2) {
+          document.getElementById('solution').innerHTML = "T1: Blue3/Purple5";
+        } else if (cod1 == 6 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T1: White1";
+        } else if (cod1 == 6 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T2: White7";
+        } else if (cod1 == 6 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T1: Blue1";
+        } else if (cod1 == 6 & cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T3: Red6";
+        } else if (cod1 == 6 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T2: Red4";
+        } else if (cod1 == 6 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T2: Purple2";
+        } else if (cod1 == 7 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T3: White2";
+        } else if (cod1 == 7 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T1: Cyan3<br>T3: Blue1/White1";
+        } else if (cod1 == 7 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T3: Red2";
+        } else if (cod1 == 7 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T3: Purple5";
+        } else if (cod1 == 7 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T2: Cyan2/Purple1";
+        } else if (cod1 == 7 && cod2 == 9) {
+          document.getElementById('solution').innerHTML = "T1: Yellow5<br>T2: Cyan4";
+        } else if (cod1 == 7 && cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T3: Blue7/Yellow2";
+        } else if (cod1 == 8 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T1: Red2";
+        } else if (cod1 == 8 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T1: Purple7<br>T3: Blue2";
+        } else if (cod1 == 8 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T2: Green5";
+        } else if (cod1 == 8 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T3: Red5";
+        } else if (cod1 == 8 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T3: Green3";
+        } else if (cod1 == 8 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T2: White5<br>T3: Green1/Purple4";
+        } else if (cod1 == 8 && cod2 == 9) {
+          document.getElementById('solution').innerHTML = "T1: Green7";
+        } else if (cod1 == 8 && cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T1: Cyan4";
+        } else if (cod1 == 8 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T1: White7";
+        } else if (cod1 == 9 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T1: Yellow3";
+        } else if (cod1 == 9 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T2: Yellow6<br>T3: Blue3";
+        } else if (cod1 == 9 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T3: Cyan3/Cyan4";
+        } else if (cod1 == 9 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T1: Purple4<br>T2: White3";
+        } else if (cod1 == 9 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T2: White4";
+        } else if (cod1 == 9 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T3: Purple2/Cyan7";
+        } else if (cod1 == 9 && cod2 == 10) {
+          document.getElementById('solution').innerHTML = "T1: Yellow2";
+        } else if (cod1 == 9 && cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T1: Blue4/Blue7<br>T2: White6";
+        } else if (cod1 == 9 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T1: Purple1<br>T2: Green7";
+        } else if (cod1 == 10 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T2: Cyan1/White1";
+        } else if (cod1 == 10 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T3: Yellow5";
+        } else if (cod1 == 10 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T1: Red3";
+        } else if (cod1 == 10 && cod2 == 9) {
+          document.getElementById('solution').innerHTML = "T1: Blue6";
+        } else if (cod1 == 10 && cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T1: Green1/Yellow6";
+        } else if (cod1 == 10 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T1: Green5/White3";
+        } else if (cod1 == 11 && cod2 == 1) {
+          document.getElementById('solution').innerHTML = "T1: White2<br>T3: Green7";
+        } else if (cod1 == 11 && cod2 == 2) {
+          document.getElementById('solution').innerHTML = "T2: Red2";
+        } else if (cod1 == 11 && cod2 == 3) {
+          document.getElementById('solution').innerHTML = "T2: Yellow7";
+        } else if (cod1 == 11 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T2: Yellow2/Cyan6<br>T3: Yellow3";
+        } else if (cod1 == 11 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T3: Cyan5";
+        } else if (cod1 == 11 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T2: Red3";
+        } else if (cod1 == 11 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T2: Cyan7";
+        } else if (cod1 == 11 && cod2 == 11) {
+          document.getElementById('solution').innerHTML = "T1: White6";
+        } else if (cod1 == 12 && cod2 == 4) {
+          document.getElementById('solution').innerHTML = "T2: Yellow3<br>T3: Green5";
+        } else if (cod1 == 12 && cod2 == 5) {
+          document.getElementById('solution').innerHTML = "T1: Cyan6<br>T2: Blue3";
+        } else if (cod1 == 12 && cod2 == 6) {
+          document.getElementById('solution').innerHTML = "T2: Blue4<br> T3: White7";
+        } else if (cod1 == 12 && cod2 == 7) {
+          document.getElementById('solution').innerHTML = "T1: Purple3";
+        } else if (cod1 == 12 && cod2 == 8) {
+          document.getElementById('solution').innerHTML = "T1: Blue2";
+        } else if (cod1 == 12 && cod2 == 10) {
+          document.getElementById('solution').innerHTML = "T2: Green3";
+        } else if (cod1 == 12 && cod2 == 12) {
+          document.getElementById('solution').innerHTML = "T1: Green4";
+        } else {
+          document.getElementById('solution').innerHTML = "???";
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>
