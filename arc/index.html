@@ -21,14 +21,14 @@
     .leftside {
       position: fixed;
       top: 50%;
-      left: 20%;
+      left: 30%;
       transform: translate(-50%, -50%);
     }
 
     .rightside {
       position: absolute;
       top: 50%;
-      left: 80%;
+      left: 70%;
       transform: translate(-50%, -50%);
     }
 
@@ -156,8 +156,6 @@
 
 <body bgcolor="#282828">
 
-  <img src="vroom.png" class="center">
-
   <div class="leftside">
     <img id="n1c1" class="num1" src="Numbers/num1.png" title="1" onclick="document.getElementById('code1').value = this.title; Click(this);">
     <img id="n2c1" class="num2" src="Numbers/num2.png" title="2" onclick="document.getElementById('code1').value = this.title; Click(this);">
@@ -175,12 +173,6 @@
     <img src="border.png">
   </div>
 
-  <div class="code">
-    <input id="code1" class="codes" type="text" maxlength="2" value="0" onclick="this.select();" oninput="CheckCode(this);">
-    <span class="codes" style="background-color: #282828;">-</span>
-    <input id="code2" class="codes" type="text" maxlength="2" value="0" onclick="this.select();" oninput="CheckCode(this);">
-  </div>
-
   <div class="rightside">
     <img class="num1" src="Numbers/num1.png" title="1" onclick="document.getElementById('code2').value = this.title; Click(this);">
     <img class="num2" src="Numbers/num2.png" title="2" onclick="document.getElementById('code2').value = this.title; Click(this);">
@@ -196,10 +188,6 @@
     <img class="num12" src="Numbers/num12.png" title="12" onclick="document.getElementById('code2').value = this.title; Click(this);">
 
     <img src="border.png">
-  </div>
-
-  <div class="solution">
-    <span id="solution">Solution</span>
   </div>
 
   <script>
