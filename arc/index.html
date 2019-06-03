@@ -21,14 +21,14 @@
     .leftside {
       position: fixed;
       top: 50%;
-      left: 30%;
+      left: 20%;
       transform: translate(-50%, -50%);
     }
 
     .rightside {
       position: absolute;
       top: 50%;
-      left: 70%;
+      left: 80%;
       transform: translate(-50%, -50%);
     }
 
@@ -171,6 +171,12 @@
     <img id="n12c1" class="num12" src="Numbers/num12.png" title="12" onclick="document.getElementById('code1').value = this.title; Click(this);">
 
     <img src="border.png">
+  </div>
+
+  <div class="code">
+    <input id="code1" class="codes" type="text" maxlength="2" value="0" onclick="this.select();" oninput="CheckCode(this);" disabled>
+    <span class="codes" style="background-color: #282828;">-</span>
+    <input id="code2" class="codes" type="text" maxlength="2" value="0" onclick="this.select();" oninput="CheckCode(this);" disabled>
   </div>
 
   <div class="rightside">
