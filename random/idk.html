@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CHUCHU</title>
+    <style>
+        .texto {
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+        }
+
+        #obj {
+            position: absolute;
+            bottom: -25px;
+            right: 50%;
+            width: 50px;
+            height: 50px;
+            background: black;
+            border-radius: 50%;
+            -webkit-transition: width 2s, height 2s, border-radius 2s, background 2s, right 2s;
+            transition: width 2s, height 2s, border-radius 2s, background 2s, right 2s;
+            display: none;
+        }
+
+        #obj:hover{
+            width: 10%;
+            height: 500px;
+            border-radius: 0%;
+            background: pink;
+            right: 45%;
+        }
+    </style>
+</head>
+<body>
+    <div class="texto">
+        Chuchu says:
+        <input type="text" id="btn">
+        <input type="button" onclick="Check();" value="Guess">
+        <br><br>
+        <span id="pp" style="display: none;">My pp: </span>
+    </div>
+
+    <div id="obj"></div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var obj = document.getElementById('obj');
+        var pp = document.getElementById('pp');
+        function Check() {
+            if (btn.value == "fuck") {
+                pp.style.display = "block";
+                obj.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
