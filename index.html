@@ -18,19 +18,19 @@
       <li><span></span></li>
       <li><span style="font-size: 18px;">LiL Peep</span></li>
       <li><span>-----</span></li>
-      <li><a href="#" onclick="VidSB(0)">Benz Truck</a></li>
-      <li><a href="#" onclick="VidSB(1)">Cry Alone</a></li>
-      <li><a href="#" onclick="VidSB(2)">Girls</a></li>
-      <li><a href="#" onclick="VidSB(3)">Live Forever</a></li>
-      <li><a href="#" onclick="VidSB(4)">Save That Shit</a></li>
-      <li><a href="#" onclick="VidSB(5)">The Brightside</a></li>
-      <li><a href="#" onclick="VidSB(6)">U Said & Star Shopping</a></li>
-      <li><a href="#" onclick="VidSB(7)">White Wine</a></li>
-      <li><a href="#" onclick="VidSB(8)">Witchblades</a></li>
+      <li><a href="#" onclick="VidNext(0)">Benz Truck</a></li>
+      <li><a href="#" onclick="VidNext(1)">Cry Alone</a></li>
+      <li><a href="#" onclick="VidNext(2)">Girls</a></li>
+      <li><a href="#" onclick="VidNext(3)">Live Forever</a></li>
+      <li><a href="#" onclick="VidNext(4)">Save That Shit</a></li>
+      <li><a href="#" onclick="VidNext(5)">The Brightside</a></li>
+      <li><a href="#" onclick="VidNext(6)">U Said & Star Shopping</a></li>
+      <li><a href="#" onclick="VidNext(7)">White Wine</a></li>
+      <li><a href="#" onclick="VidNext(8)">Witchblades</a></li>
       <li><span></span></li>
       <li><span style="font-size: 18px;">xxxtentacion</span></li>
       <li><span>-----</span></li>
-      <li><a href="#" onclick="VidSB(9)">Moonlight</a></li>
+      <li><a href="#" onclick="VidNext(9)">Moonlight</a></li>
     </ul>
   </div>
 
@@ -74,7 +74,7 @@
     <button onclick="VolPause()" type="button" class="btn btn-outline-light"><i id="aPause"
         class="fas fa-play"></i></button>
     <button onclick="VolUp()" type="button" class="btn btn-outline-light"><i class="fas fa-plus"></i></button>
-    <button onclick="VidNext()" type="button" class="btn btn-outline-light"><i class="fas fa-random"></i></button>
+    <button onclick="VidNext(Math.round(Math.random() * 9))" type="button" class="btn btn-outline-light"><i class="fas fa-random"></i></button>
   </div>
 
   <div class="sicons">
@@ -125,7 +125,7 @@
     var cnt = 0;
 
     vid.onended = function () {
-      VidNext();
+      VidNext(Math.round(Math.random() * 9));
     }
 
     function VolDown() {
@@ -218,19 +218,7 @@
       }, 125);
     }
 
-    function VidNext() {
-      window.clearInterval(inter);
-      document.getElementById("myVideo").poster =
-        "https://thumbs.gfycat.com/DeliciousAnnualDromaeosaur-size_restricted.gif";
-      let x = Math.round(Math.random() * 9);
-      myTitle(srcMedia[x].name);
-      vid.src = srcMedia[x].src;
-      vid.play();
-      document.getElementById("aPause").classList.remove('fa-play');
-      document.getElementById("aPause").classList.add('fa-pause');
-    }
-
-    function VidSB(x) {
+    function VidNext(x) {
       window.clearInterval(inter);
       document.getElementById("myVideo").poster =
         "https://thumbs.gfycat.com/DeliciousAnnualDromaeosaur-size_restricted.gif";
