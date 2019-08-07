@@ -1,98 +1,107 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+@font-face {
+    font-family: OldLondon;
+    src: url('fonts/OldLondon.ttf');
 }
 
-.sidebar {
-  float: left;
-  width: 200px;
-  height: 100%;
-  margin-left: -200px;
-  background: rgb(0, 0, 0, 0.75);
-  overflow: hidden;
-  transition: 0.6s all;
+@font-face {
+    font-family: ArtDystopia;
+    src: url('fonts/Art\ Dystopia.otf');
 }
 
-.sidebar ul {
-  margin: 0;
-  padding: 0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.sidebar ul li {
-  list-style: none;
+#text {
+    position: absolute;
+    font-family: OldLondon;
+    font-size: 150px;
+    color: white;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+    transition: opacity 0.7s;
+    cursor: pointer;
 }
 
-.sidebar ul li a, span {
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  height: 30px;
-  width: 100%;
-  font-size: 14px;
-  line-height: 30px;
-  text-align: center;
-  display: block;
-  
+#text:hover {
+    opacity: 1;
 }
 
-.sidebar ul li a:hover {
-  border: 1px solid white;
+#text:active {
+    text-transform: uppercase;
+    font-family: ArtDystopia;
 }
 
-.btnSB {
-  position: relative;
-  float: left;
-  padding: 0 10px;
-  font-size: 40px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+#player {
+    position: fixed;
+    width: 350px;
+    bottom: 25px;
+    left: 15px;
 }
 
-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  z-index: -2;
+.myVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: -2;
 }
 
-.overlay {
-  position: fixed;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: -1;
+#player i {
+    position: absolute;
+    margin-top: -6px;
+    color: #666;
+    cursor: pointer;
 }
 
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   text-align: center;
+#volume {
+    position: absolute;
+    left: 24px;
+    margin: 0 auto;
+    height: 5px;
+    width: 125px;
+    background: #555;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
-.footer button {
-  margin: 6px 2px;
+#volume .ui-slider-range-min {
+    height: 5px;
+    width: 300px;
+    position: absolute;
+    background: #be2edd;
+    border: none;
+    border-radius: 10px;
+    outline: none;
 }
 
-.sicons {
-  position: fixed;
-  background-color:transparent;
-  background-image:none;
-  opacity: 0.6;
-  margin: 6px 2px;
+#volume .ui-slider-handle {
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background: #FFF;
+    position: absolute;
+    margin-left: -5px;
+    margin-top: -5px;
+    cursor: pointer;
+    outline: none;
+}
+
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
