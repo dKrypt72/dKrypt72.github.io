@@ -1,9 +1,11 @@
 var muted = false;
+var videos = ["media/bztruckpt2.mp4", "media/whitetee.mp4", "media/witchblades.mp4"];
+var num = Math.floor(Math.random() * videos.length);
 
 $("#volume").slider({
     min: 0,
     max: 100,
-    value: 20,
+    value: 30,
     range: "min",
     slide: function (event, ui) {
         muted = false;
@@ -18,7 +20,7 @@ myVideo.classList.add("myVideo");
 $('#video').append(myVideo);
 
 
-playMedia('media/bztruckpt2.mp4', 0.2);
+playMedia(videos[num], $("#volume").slider("value") / 100);
 
 function playMedia(fileName, myVolume) {
     myVideo.load();
@@ -26,9 +28,21 @@ function playMedia(fileName, myVolume) {
     myVideo.src = fileName;
     myVideo.setAttribute('loop', '');
     setVolume(myVolume);
-
-    myVideo.play();
 }
+
+$('#text').click(function () {
+    if (myVideo.paused) {
+        myVideo.play();
+    } else {
+        myVideo.pause();
+    }
+});
+
+$('#text').dblclick(function() {
+    num = Math.floor(Math.random() * videos.length);
+    playMedia(videos[num], $("#volume").slider("value") / 100);
+    myVideo.play();
+});
 
 function setVolume(myVolume) {
     myVideo.volume = myVolume;
