@@ -1,5 +1,5 @@
 var muted = false;
-var videos = ["media/bztruckpt2.mp4", "media/whitetee.mp4", "media/witchblades.mp4"];
+var videos = ["bztruckpt2", "whitetee", "witchblades", "gymclass"];
 var num = Math.floor(Math.random() * videos.length);
 
 $("#volume").slider({
@@ -20,7 +20,7 @@ myVideo.classList.add("myVideo");
 $('#video').append(myVideo);
 
 
-playMedia(videos[num], $("#volume").slider("value") / 100);
+playMedia("media/" + videos[num] + ".mp4", $("#volume").slider("value") / 100);
 
 function playMedia(fileName, myVolume) {
     myVideo.load();
@@ -40,7 +40,7 @@ $('#text').click(function () {
 
 $('#text').dblclick(function() {
     num = Math.floor(Math.random() * videos.length);
-    playMedia(videos[num], $("#volume").slider("value") / 100);
+    playMedia("media/" + videos[num] + ".mp4", $("#volume").slider("value") / 100);
     myVideo.play();
 });
 
