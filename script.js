@@ -1,5 +1,6 @@
-var muted = false;
-var videos = ["bztruckpt2", "whitetee", "witchblades", "gymclass"];
+var muted = false,
+    loop = false;
+var videos = ["bztruckpt2", "whitetee", "witchblades", "gymclass", "nothing", "liveforever", "cryalone"];
 var num = Math.floor(Math.random() * videos.length);
 
 $("#volume").slider({
@@ -20,13 +21,12 @@ myVideo.classList.add("myVideo");
 $('#video').append(myVideo);
 
 
-playMedia("media/" + videos[num] + ".mp4", $("#volume").slider("value") / 100);
+playMedia("media/" + videos[0] + ".mp4", $("#volume").slider("value") / 100);
 
 function playMedia(fileName, myVolume) {
     myVideo.load();
 
     myVideo.src = fileName;
-    myVideo.setAttribute('loop', '');
     setVolume(myVolume);
 }
 
@@ -38,11 +38,18 @@ $('#text').click(function () {
     }
 });
 
-$('#text').dblclick(function() {
-    num = Math.floor(Math.random() * videos.length);
+$('#text').dblclick(function () {
+    nextVideo();
+});
+
+function nextVideo() {
+    let aux = num;
+    while (num == aux) {
+        num = Math.floor(Math.random() * videos.length);
+    }
     playMedia("media/" + videos[num] + ".mp4", $("#volume").slider("value") / 100);
     myVideo.play();
-});
+}
 
 function setVolume(myVolume) {
     myVideo.volume = myVolume;
@@ -78,3 +85,24 @@ $("#vicon").click(function () {
         setVolume(0);
     }
 });
+
+$("#loop").click(function () {
+    if (loop) {
+        $(this).text("loop:off");
+        $("#myVideo").removeAttr("loop");
+        loop = false;
+    } else {
+        $(this).text("loop:on");
+        myVideo.setAttribute('loop', '');
+        loop = true;
+    }
+
+});
+
+$('video').on('ended', function () {
+    if (!loop) {
+        nextVideo();
+    }
+});
+
+document.addEventListener('contextmenu', event => event.preventDefault());

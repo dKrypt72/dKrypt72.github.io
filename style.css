@@ -132,3 +132,17 @@ a {
     /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
 }
+
+.loop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    color: white;
+    font-family: monospace;
+    font-style: italic;
+    word-spacing: -5px;
+    text-decoration: underline;
+    text-shadow: 2px 2px 5px black;
+    cursor: pointer;
+}
